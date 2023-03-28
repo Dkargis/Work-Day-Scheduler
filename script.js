@@ -2,7 +2,7 @@ var currentDay = $('#currentDay');
 var saveBtn = $('.saveBtn');
 var timeBlockEl = $('time-block');
 var textAreaEl = $('description');
-var hourEL = $('hour');
+// var hourEL = $('#hour');
 var hour9El = $('#hour-9');
 var hour10EL = $( '#hour-10');
 var hour11El = $( '#hour-11');
@@ -39,6 +39,21 @@ function time() {
 
 setInterval(time, 1000);
 
+for (var i = 9; i <= 17; i++){
+$("#hour-" + i).children('.description').val(function() {
+  return localStorage.getItem('hour-' + i);
+});
+};
+// function displayInfo () {
+//   for (var i = 9; i <= 17; i++) {
+//   $('#hour-' + i).val(localStorage.getItem('hour-'+ i));
+//   var test = localStorage.getItem('hour-'+ i);
+//   console.log(test);
+
+//   }
+// };
+
+// displayInfo();
 // I had a fellow student help me with this funtion, I was not able to figure it out on my own.
 $(function timeOfDay () {
   var currentTime = dayjs().hour();
@@ -65,19 +80,6 @@ for (var i = 0; i < saveBtn.length; i++) {
     var time = $(this).parent().attr('id');
     localStorage.setItem(time, text);
     };
-
-    function displayInfo () {
-      for (var i = 9; i <= 17; i++) {
-      $('#hour-' + i + '.description').val(localStorage.getItem('hour-'+ i));
-      }
-     
-
-    };
-
-    displayInfo();
-
-console.log(displayInfo);
-
 
 
 
